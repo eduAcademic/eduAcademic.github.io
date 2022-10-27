@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Resumen Compra Tickets</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ps-5 mb-5 fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Index.html">Conf. Bs As</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" href="#">La conferencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="#">Los oradores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="#">El lugar y la fecha</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="#">Conviértete en orador</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success fw-bold" href="#">Comprar tickets</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card-group ps-5 pt-5 pl-5 pe-5 mt-5 mb-5">
+        <div class="card text-center">
+            <div class="card-body">
+                <h4 class="card-title">Estudiante</h4>
+                <p class="card-text">Tiene un descuento</p>
+                <h5 class="fw-bold">80%</h5>
+                <h6 class="text-muted">*Presentar documentación</h6>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h4 class="card-title">Trainee</h4>
+                <p class="card-text">Tiene un descuento</p>
+                <h5 class="fw-bold">50%</h5>
+                <h6 class="text-muted">*Presentar documentación</h6>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h4 class="card-title">Junior</h4>
+                <p class="card-text">Tiene un descuento</p>
+                <h5 class="fw-bold">15%</h5>
+                <h6 class="text-muted">*Presentar documentación</h6>
+            </div>
+        </div>
+    </div>
+
+    <h3 id="venta" class="text-center">VENTA</h3>
+    <h1 class="text-center">VALOR DE TICKET 200$</h1>
+    <form>
+        <div class="row ps-5 pe-5 mt-4">
+            <div class="col">
+                <input id="nombrestr" required type="text" class="form-control" placeholder="Nombre" name="Nombre">
+            </div>
+            <div class="col">
+                <input id="apellidostr" required type="text" class="form-control" placeholder="Apellido" name="Apellido">
+            </div>
+        </div>
+        <div class="row ps-5 pe-5 mt-4">
+            <div class="col">
+                <input required type="email" class="form-control" placeholder="Correo">
+            </div>
+        </div>
+        <div class="row ps-5 pe-5 mt-4">
+            <div class="col">
+                <p class="fw-bold">Cantidad</p>
+                <input id="cantidad" required type="number" class="form-control" placeholder="Cantidad" name="Cantidad">
+            </div>
+            <div class="col">
+                <p class="fw-bold">Categoría</p>
+                <select id="tipo" required class="form-select">
+                    <option>Estudiante</option>
+                    <option>Trainee</option>
+                    <option>Junior</option>
+                </select>
+            </div>
+        </div>
+        <div class="row ps-5 pe-5 mt-5 mb-5">
+            <div class="d-grid" style="border-radius: 100px">
+                <h5 id="total" style="background-color:#79d3f3; color: darkslateblue">Total a pagar: $</h5>
+            </div>
+        </div>
+        <div class="row ps-5 pe-5 mt-4">
+            <div class="col">
+                <div class="d-grid">
+                    <button onclick="borrar()" type="reset" class="btn btn-primary btn-block" style="border-color: #5ada40; background-color: #5ada40">Borrar</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-grid">
+                    <button onclick="calcularTotal()" type="button" class="btn btn-primary btn-block" style="border-color: #5ada40; background-color: #5ada40"> Resumen</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="container fw-bold text-light mw-100 mt-4" style="background-color: cadetblue">
+        <footer class="py-4">
+            <div class="row text-center">
+                <div class="col my-auto">
+                    <small>Preguntas frecuentes</small>
+                </div>
+                <div class="col my-auto">
+                    <small>Contáctanos</small>
+                </div>
+                <div class="col my-auto">
+                    <small>Prensa</small>
+                </div>
+                <div class="col my-auto">
+                    <small>Conferencias</small>
+                </div>
+                <div class="col my-auto">
+                    <small>Términos y condiciones</small>
+                </div>
+                <div class="col my-auto">
+                    <small>Privacidad</small>
+                </div>
+                <div class="col my-auto">
+                    <small>Estudiantes</small>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        var cantidad = 0;
+        let tipo = "";
+        var total = 0;
+        const calcularTotal = () => {
+            var descuento = 0;
+            tipo = document.getElementById("tipo").value;
+            cantidad = document.getElementById("cantidad").value;
+            if (tipo == "Estudiante") {
+                total = cantidad * 200;
+                descuento = (80 * total) / 100;
+                total = total - descuento;
+            } else if (tipo == "Trainee") {
+                total = cantidad * 200;
+                descuento = (50 * total) / 100;
+                total = total - descuento;
+            } else {
+                total = cantidad * 200;
+                descuento = (15 * total) / 100;
+                total = total - descuento;
+            }
+            document.getElementById("total").innerHTML = "Total a pagar: " + total + " $";
+        }
+        const borrar = () => {
+            document.getElementById("total").innerHTML = "Total a pagar: $";
+        }
+
+    </script>
+</body>
+
+</html>
